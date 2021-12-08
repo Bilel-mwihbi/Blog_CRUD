@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/_head") %>
+<body>
+    <nav class="navbar  navbar-expand-lg bg-primary ">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/" style="color: white;">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" style="color: white;">All Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blogs/new" style="color: white;">New Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid bg-primary text-white text-center">
+        <div class="container">
+            <h1 class="display-1">Welcome to My Blogs :D </h1>
+            <p class="lead">My Blogs is a community of software developers getting together to help one another out. The software industry relies on
+            collaboration and networked learning. We provide a place for that to happen.</p>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="mb-4">All Blogs</h2>
+        
+        <% obj.forEach(blog=> { %>
+            <div class="card mt-4 ">
+                <div  class="card-body  border border-dark rounded ">
+                    <h4 class="card-title">
+                        <%= blog.title %>
+                    </h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        Posted on <%= blog.creationDate.getDate()%> <%= month[blog.creationDate.getMonth()]%> %>
+                    </div>
+                    <div class="card-text mb-2">
+                        <%= blog.description %>
+                    </div> 
+                    <a href="/blogs/<%= blog._id %>" class="btn btn-info">Read More</a>
+                    <form class="d-inline" action="/blogs/<%= blog._id %>?_method=DELETE"
+                        method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                
+                <% }) %>
+            </div>
+    </div>
+           
+            
+    
+</body>
+</html>

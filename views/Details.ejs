@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/_head") %>
+<body>
+    <div class="container">
+        <h1 class="mb-1 mt-3">
+            <%= obj.title %>
+        </h1>
+        <div class="text-muted mb-2">
+            <p> Posted on <%= obj.creationDate.getDate()%> <%= month[obj.creationDate.getMonth()]%><br>
+               Author : <%= obj.author %>
+
+            </p>
+            
+        </div>
+        <a href="/" class="btn btn-secondary">All Blogs</a>
+        <a href="/blogs/edit/<%= obj._id %>" type="button" class="btn btn-info">Edit</a>
+        
+        
+    </div>
+    <div class="container mt-3">
+        <p><%= obj.content %></p>
+    </div>
+
+    
+</body>
+
+</html>
